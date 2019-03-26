@@ -25,8 +25,9 @@ for area in area_of_interest:
                        '2017-10-20..2017-10-20&areaOfInterest=%s&dayCoverage=true&dnboundCoverage=true' % area)
 
 def get_file_content(use_proxy=False):
-    url_file_path = set()   # 防止获取的网址出现重复的情况
+    file_path_urls = set()
     #url = 'https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/6/MCD19A2/2017/293/MCD19A2.A2017293.h29v06.006.2018119160954.hdf'
+
 
     header = {}
     # header['Access-Control-Allow-Credentials'] = 'true'
@@ -55,12 +56,9 @@ def get_file_content(use_proxy=False):
 
         for key, value in data_dict.items():
             file_name = value['name']
-            url_file_path.append(osp.join(file_download_path, file_name))
+            file_path_urls.add(osp.join(file_download_path, file_name))
 
-            # with open(osp.join(file_saving_root, file_name), 'wb') as f:
-            #     f.write(requests.get(url_file_path, headers=fake_headers).content)
-
-    return url_file_path
+    return file_path_urls
 
 
 def save_hdf_files(file_path_urls_, use_proxy=False):
