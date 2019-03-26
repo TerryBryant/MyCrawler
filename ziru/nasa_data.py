@@ -5,7 +5,6 @@ import json
 import os.path as osp
 
 
-
 # 爬下来的文件保存路径
 file_saving_root = '/home/terry/workspace/me'
 
@@ -14,16 +13,17 @@ file_download_path = 'https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/6/M
 
 
 # 这些参数和文件位置有关系，nasa页面里面的文件分四段进行加载，加载在四个坐标区域内
-area_of_interest = ['x121.20y31.80,x121.87y31.49'
-                    , 'x120.05y25.28,x122.00y21.92'
-                    , 'x108.62y20.13,x111.02y18.19'
-                    , 'x73.62y53.54,x134.76y20.23']
+area_of_interest = ['x121.20y31.80,x121.87y31.49',
+                    'x120.05y25.28,x122.00y21.92',
+                    'x108.62y20.13,x111.02y18.19',
+                    'x73.62y53.54,x134.76y20.23']
 
 source_page_urls = []
 for area in area_of_interest:
     source_page_urls.append('https://ladsweb.modaps.eosdis.nasa.gov/api/v1/files/product=MCD19A2&collection=6&dateRanges='
                        '2017-10-20..2017-10-20&areaOfInterest=%s&dayCoverage=true&dnboundCoverage=true' % area)
 
+# 第一步，获取网络文件下载的路径
 def get_file_content(use_proxy=False):
     file_path_urls = set()
     #url = 'https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/6/MCD19A2/2017/293/MCD19A2.A2017293.h29v06.006.2018119160954.hdf'
@@ -61,6 +61,7 @@ def get_file_content(use_proxy=False):
     return file_path_urls
 
 
+# 第二步，根据下载路径，将文件保存到本地
 def save_hdf_files(file_path_urls_, use_proxy=False):
     header = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"}
     proxies = {'http': 'HTTP://127.0.0.1:8087', 'https': 'HTTP://127.0.0.1:8087'}
