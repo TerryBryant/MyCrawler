@@ -82,7 +82,8 @@ def save_hdf_files(file_path_urls_, use_proxy=False):
 
 
 if __name__ == '__main__':
-    file_path_urls = get_file_content(use_proxy=False)
-    save_hdf_files(file_path_urls, use_proxy=False)
+    use_proxy = False
+    file_path_urls = get_file_content(use_proxy=use_proxy)
+    save_hdf_files(file_path_urls, use_proxy=use_proxy)
 
 
