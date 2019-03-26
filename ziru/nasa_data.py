@@ -28,10 +28,6 @@ def get_file_content(use_proxy=False):
     url_file_path = []
     #url = 'https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/6/MCD19A2/2017/293/MCD19A2.A2017293.h29v06.006.2018119160954.hdf'
 
-    url = 'https://ladsweb.modaps.eosdis.nasa.gov/api/v1/files/product=MCD19A2&collection=6&dateRanges=' \
-          '2017-10-20..2017-10-20&areaOfInterest=x121.20y31.80,x121.87y31.49&dayCoverage=true&dnboundCoverage=true'
-
-
     header = {}
     # header['Access-Control-Allow-Credentials'] = 'true'
     #header['Content-Encoding'] = 'gzip'
