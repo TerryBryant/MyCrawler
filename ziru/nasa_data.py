@@ -25,7 +25,7 @@ for area in area_of_interest:
                        '2017-10-20..2017-10-20&areaOfInterest=%s&dayCoverage=true&dnboundCoverage=true' % area)
 
 def get_file_content(use_proxy=False):
-    url_file_path = []
+    url_file_path = set()   # 防止获取的网址出现重复的情况
     #url = 'https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/6/MCD19A2/2017/293/MCD19A2.A2017293.h29v06.006.2018119160954.hdf'
 
     header = {}
