@@ -86,7 +86,7 @@ all_car_urls = random.sample(all_car_urls, 10000)
 
 for car in all_car_urls:
     index_ = car.rfind('_')
-    img_name = car[index_ + 1:]
+    img_name = car[index_ + 1:-1]   # 注意换行符
     try:
         rq.urlretrieve(car, osp.join(img_save_path, img_name))
         print('Saved %s' % img_name)
